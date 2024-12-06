@@ -10,6 +10,8 @@ from articleapp.decorators import article_ownership_required
 from articleapp.forms import ArticleCreationForm
 from articleapp.models import Article
 from commentapp.forms import CommentCreationForm
+from random import shuffle
+
 
 
 # Create your views here.
@@ -60,4 +62,7 @@ class ArticleListView(ListView):
     template_name = 'articleapp/list.html'
     paginate_by = 25
     def get_queryset(self):
-        return Article.objects.all().order_by('-pk')
+        # Fetch all articles
+        articles = list(Article.objects.all())  # Convert QuerySet to list
+        shuffle(articles)  # Randomly shuffle the list of articles
+        return articles

@@ -16,6 +16,7 @@ import environ
 import os
 
 from django.conf.global_settings import MEDIA_ROOT
+from django.contrib.messages import constants as messages
 from django.template.context_processors import static
 from django.urls import reverse_lazy
 
@@ -38,7 +39,8 @@ INSTALLED_APPS = [
     'articleapp',
     'commentapp',
     'projectapp',
-    'subscribeapp'
+    'subscribeapp',
+    'likeapp',
 
 ]
 
@@ -51,6 +53,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MESSAGE_TAGS = {
+     messages.ERROR: 'danger'
+}
 
 ROOT_URLCONF = 'pragmatic.urls'
 
@@ -128,4 +134,3 @@ LOGOUT_REDIRECT_URL = reverse_lazy('accountapp:login')
 MEDIA_URL = '/media/'
 
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-

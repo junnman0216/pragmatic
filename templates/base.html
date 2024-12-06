@@ -29,18 +29,18 @@
             // Select all the messages with the 'fade-message' class
             var messages = document.querySelectorAll('.fade-message');
 
-            // Loop through each message and apply fade-out after 3 seconds
+            // Loop through each message and apply fade-out effect
             messages.forEach(function(message) {
                 setTimeout(function() {
                     // Apply fade-out effect
-                    message.style.transition = "opacity 1s ease-out";
-                    message.style.opacity = 0;
+                    message.style.transition = "opacity 1s ease-out";  // Ensure the fade-out transition is set to 1 second
+                    message.style.opacity = 0;  // Start the fade-out
 
                     // After fade-out is complete, remove the message from the DOM
                     setTimeout(function() {
                         message.remove();
-                    }, 500); // Remove after 1 second of fading
-                }, 1000); // Delay fade-out for 3 seconds
+                    }, 500);  // Remove after 1 second of fading
+                }, 1000);  // Wait for 3 seconds before starting the fade-out
             });
         });
     </script>
@@ -53,11 +53,12 @@
             left: 50%;
             transform: translateX(-50%); /* Center the message horizontally */
             z-index: 9999;  /* Make sure the message is on top of everything else */
+            opacity: 1;
         }
 
         .fade-message {
-            opacity: 1;
-            transition: opacity 1s ease-out;
+            opacity: 1;  /* Initially fully visible */
+            transition: opacity 1s ease-out;  /* Fade-out transition duration of 1 second */
         }
     </style>
 
